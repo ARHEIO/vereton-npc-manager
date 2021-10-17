@@ -1,0 +1,18 @@
+.appHeader {
+  background-color: #282c34;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 24px;
+  align-items: center;
+  gap: 24px;
+
+  form {
+    display: contents;
+  }
+
+  input,
+  button {
+    height: 53px;
+    margin: 0;
+  }
+}

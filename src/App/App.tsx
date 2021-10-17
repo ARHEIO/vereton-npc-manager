@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './App.module.scss';
-import { Map } from '../Map';
+import { Map } from './Map';
+import { Application } from 'pixi.js';
+import { useWindowSize } from './hooks';
+import { Header } from './Header';
 
 export const App: React.VFC = () => {
-  return (
+
+  const windowSize = useWindowSize();
+
+  const [app, setApp] = useState<Application>();
+
+  useEffect(() => {
+    if (windowSize != null) {
+      setApp(new Application({
+        height: windowSize.height - 170,
+        width: windowSize.width,
+      }));
+    }
+  }, [windowSize])
+
+  return app ? (
     <div className={styles.app}>
-      <header className={styles.appHeader}>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </header>
+      <Header app={app} />
       <main>
-        <Map />
+        <Map app={app} />
       </main>
     </div>
-  );
+  ) : <p>Loading ...</p> ;
 }
 
 export default App;
