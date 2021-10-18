@@ -7,7 +7,7 @@ type WheelEvent = {
   wheel?: (event: InteractionEvent) => void
 }
 
-export type DraggableSpriteProps = {
+export type DraggableScrollableSpriteProps = {
   imageUrl: string;
   name: string;
   startingHeight: number;
@@ -16,7 +16,7 @@ export type DraggableSpriteProps = {
   startingY?: number;
 } & WheelEvent & _ReactPixi.ISprite;
 
-export const DraggableSprite: React.FC<DraggableSpriteProps> = ({
+export const DraggableScrollableSprite: React.FC<DraggableScrollableSpriteProps> = ({
   children,
   imageUrl,
   name,

@@ -1,6 +1,11 @@
 .app {
+  height: calc(100% - 36px);
+  padding: 16px;
   text-align: center;
   display: grid;
   grid-template-rows: auto 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
 
