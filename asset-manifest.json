@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/vereton-npc-manager/static/css/main.4fe646b9.chunk.css",
-    "main.js": "/vereton-npc-manager/static/js/main.e177fd11.chunk.js",
-    "main.js.map": "/vereton-npc-manager/static/js/main.e177fd11.chunk.js.map",
-    "runtime-main.js": "/vereton-npc-manager/static/js/runtime-main.fa78a25b.js",
-    "runtime-main.js.map": "/vereton-npc-manager/static/js/runtime-main.fa78a25b.js.map",
-    "static/js/2.c61b2d5a.chunk.js": "/vereton-npc-manager/static/js/2.c61b2d5a.chunk.js",
-    "static/js/2.c61b2d5a.chunk.js.map": "/vereton-npc-manager/static/js/2.c61b2d5a.chunk.js.map",
-    "static/js/3.7a257fd8.chunk.js": "/vereton-npc-manager/static/js/3.7a257fd8.chunk.js",
-    "static/js/3.7a257fd8.chunk.js.map": "/vereton-npc-manager/static/js/3.7a257fd8.chunk.js.map",
+    "main.css": "/vereton-npc-manager/static/css/main.740e47cf.chunk.css",
+    "main.js": "/vereton-npc-manager/static/js/main.419a6254.chunk.js",
+    "main.js.map": "/vereton-npc-manager/static/js/main.419a6254.chunk.js.map",
+    "runtime-main.js": "/vereton-npc-manager/static/js/runtime-main.1bc942bc.js",
+    "runtime-main.js.map": "/vereton-npc-manager/static/js/runtime-main.1bc942bc.js.map",
+    "static/js/2.2143f5a1.chunk.js": "/vereton-npc-manager/static/js/2.2143f5a1.chunk.js",
+    "static/js/2.2143f5a1.chunk.js.map": "/vereton-npc-manager/static/js/2.2143f5a1.chunk.js.map",
+    "static/js/3.0278baa8.chunk.js": "/vereton-npc-manager/static/js/3.0278baa8.chunk.js",
+    "static/js/3.0278baa8.chunk.js.map": "/vereton-npc-manager/static/js/3.0278baa8.chunk.js.map",
     "index.html": "/vereton-npc-manager/index.html",
-    "static/css/main.4fe646b9.chunk.css.map": "/vereton-npc-manager/static/css/main.4fe646b9.chunk.css.map",
-    "static/js/2.c61b2d5a.chunk.js.LICENSE.txt": "/vereton-npc-manager/static/js/2.c61b2d5a.chunk.js.LICENSE.txt",
+    "static/css/main.740e47cf.chunk.css.map": "/vereton-npc-manager/static/css/main.740e47cf.chunk.css.map",
+    "static/js/2.2143f5a1.chunk.js.LICENSE.txt": "/vereton-npc-manager/static/js/2.2143f5a1.chunk.js.LICENSE.txt",
     "static/media/fool.b3ab9355.jpeg": "/vereton-npc-manager/static/media/fool.b3ab9355.jpeg",
     "static/media/magician.442adec3.jpeg": "/vereton-npc-manager/static/media/magician.442adec3.jpeg",
     "static/media/vereton.c8e9ebd3.jpeg": "/vereton-npc-manager/static/media/vereton.c8e9ebd3.jpeg"
   },
   "entrypoints": [
-    "static/js/runtime-main.fa78a25b.js",
-    "static/js/2.c61b2d5a.chunk.js",
-    "static/css/main.4fe646b9.chunk.css",
-    "static/js/main.e177fd11.chunk.js"
+    "static/js/runtime-main.1bc942bc.js",
+    "static/js/2.2143f5a1.chunk.js",
+    "static/css/main.740e47cf.chunk.css",
+    "static/js/main.419a6254.chunk.js"
   ]
 }
