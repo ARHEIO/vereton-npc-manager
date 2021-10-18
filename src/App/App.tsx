@@ -1,33 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './App.module.scss';
-import { Map } from './Map';
-import { Application } from 'pixi.js';
-import { useWindowSize } from './hooks';
-import { Header } from './Header';
+import { Header } from '../components/Header';
+import { Map } from '../components/Map';
+
 
 export const App: React.VFC = () => {
 
-  const windowSize = useWindowSize();
-
-  const [app, setApp] = useState<Application>();
-
-  useEffect(() => {
-    if (windowSize != null) {
-      setApp(new Application({
-        height: windowSize.height - 170,
-        width: windowSize.width,
-      }));
-    }
-  }, [windowSize])
-
-  return app ? (
+  return (
     <div className={styles.app}>
-      <Header app={app} />
-      <main>
-        <Map app={app} />
-      </main>
+      <Header />
+      <Map />
     </div>
-  ) : <p>Loading ...</p> ;
+  );
 }
 
 export default App;
