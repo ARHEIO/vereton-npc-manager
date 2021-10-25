@@ -1,76 +1,50 @@
-import React from 'react';
-import { Application, Container, DisplayObject, Sprite } from 'pixi.js';
+import React, { useState } from 'react';
+import { Application } from 'pixi.js';
 import styles from './Header.module.scss';
-import { Button, Form, FormValuesData, Skeleton, TextField} from 'precise-ui';
-
-type CardStateType = {
-  name: string;
-  x: number;
-  y: number
-}
-
-const getVeretonFromStage = (stage: Container): Sprite | null => {
-  const firstChild = stage.children[0];
-  return firstChild.name === 'Vereton'
-    ? firstChild as Sprite
-    : null;
-};
-
-const mapDisplayObjectToSaveState = ({ name, x, y }: DisplayObject): CardStateType => ({ name, x, y });
-
-function reduceArrayToObjectOfKeys<T extends Record<string, string|number>>(keyName: keyof T) {
-  return (output: Record<T[keyof T], T>, current: T) => {
-    const key = current[keyName];
-    output[key] = current;
-    return output;
-  }
-}
-
-const loadCardsFromString = (loadData: string): {[key: string]: CardStateType} => {
-  const cards: CardStateType[] = JSON.parse(atob(loadData));
-  return cards.reduce(reduceArrayToObjectOfKeys<CardStateType>('name'), {})
-}
-
+import { Button, Dropzone, InputChangeEvent, Modal, ModalBody, ModalHeader, Skeleton } from 'precise-ui';
+import { generateSaveData, saveToFile } from '../../utils';
+import { setMapState } from '../../utils/setMapState';
 
 export const Header: React.VFC<{app?: Application}> = ({app}) => {
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   if (!app) {
     return <Skeleton/>
   }
-  const { stage } = app;
 
-  const loadState = ({ load }: FormValuesData) => {
+  const loadState = async ({ value }: InputChangeEvent<File[]>) => {
     try {
-      const cards = loadCardsFromString(load);
-      const vereton = getVeretonFromStage(stage);
-      vereton?.children.forEach((child: DisplayObject) => {
-        const dataKey = child.name;
-        child.x = cards[dataKey].x;
-        child.y = cards[dataKey].y;
-      })
+      const [ file ] = value;
+      const loadedData = await file.text();
+      setMapState(app, loadedData)
+
+      setModalIsOpen(false);
     } catch (error) {
+      console.error(error)
       alert('That chunk is not valid');
     }
   }
 
   const printState = () => {
-    const vereton = getVeretonFromStage(stage);
-    if (!vereton) {
-      throw new Error('Something is wrong');
-    }
-
-    const cards: CardStateType[] = vereton.children.map(mapDisplayObjectToSaveState);
-
-    prompt("Copy to clipboard: ", btoa(JSON.stringify(cards)));
+    const data = generateSaveData(app);
+    saveToFile(data);
   }
 
   return (
-    <header className={styles.appHeader}>
-      <Form<{load: string}> onSubmit={e => loadState(e.data)}>
-        <TextField style={{height: 54}} name="load" autoComplete='off' />
-        <Button style={{height: 54}}>Load</Button>
+    <>
+      <header className={styles.appHeader}>
+        <div></div>
+        <Button style={{height: 54}} onClick={() => setModalIsOpen(true)}>Load</Button>
         <Button style={{height: 54}} onClick={printState} type='button' >Print State</Button>
-      </Form>
-    </header>
+        <div></div>
+      </header>
+      <Modal open={modalIsOpen}>
+        <ModalHeader title='Upload your state file' />
+        <ModalBody>
+          <Dropzone onChange={loadState} multiple={false} />
+        </ModalBody>
+      </Modal>
+    </>
   );
 }
