@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import styles from './App.module.scss';
 import { Header } from '../../components/Header';
-import { Map } from '../../components/Map';
-import { Spinner } from 'precise-ui/dist/es6';
+import { Spinner } from 'precise-ui';
 import { Stage } from '@inlet/react-pixi';
 import { useWindowSize } from '../../hooks';
 import { Application } from '@pixi/app';
+import { TheFool, TheMagician, ThePriestess, TheEmpress, TheEmperor, TheHierophant, TheLovers, TheChariot, Strength, TheHermit, TheWheel, Justice, TheHangedMan, Death, Temperance, TheDevil, TheTower, TheStar, TheMoon, TheSun, Judgement, TheWorld } from '../../components/TarotSprite';
+import { VeretonSprite } from '../../components/VeretonSprite';
 
 export const App: React.VFC = () => {
   const [app, setApp] = useState<Application>();
   const windowSize = useWindowSize();
+  const HEADER_HEIGHT = 54 + 24 + 24 + 3;
 
   if (!windowSize) {
     return <Spinner />;
@@ -17,17 +19,41 @@ export const App: React.VFC = () => {
 
   return (
     <div className={styles.app}>
-      <Header app={app} />
+      <Header app={app} /> 
       <main>
         <Stage
-          width={windowSize.width - 16}
-          height={windowSize.height - (146)}
+          width={windowSize.width - 8}
+          height={windowSize.height - HEADER_HEIGHT - 54}
           options={{ backgroundColor: 0xababab }}
           onMount={(app) => setApp(app)}
         >
-          <Map />
+          <VeretonSprite>
+            <TheFool />
+            <TheMagician />
+            <ThePriestess />
+            <TheEmpress />
+            <TheEmperor />
+            <TheHierophant />
+            <TheLovers />
+            <TheChariot />
+            <Strength />
+            <TheHermit />
+            <TheWheel />
+            <Justice />
+            <TheHangedMan />
+            <Death />
+            <Temperance />
+            <TheDevil />
+            <TheTower />
+            <TheStar />
+            <TheMoon />
+            <TheSun />
+            <Judgement />
+            <TheWorld />
+          </VeretonSprite>
         </Stage>
       </main>
+      <footer style={{backgroundColor: '#282c34', height: '54px'}}></footer>
     </div>
   );
 }
